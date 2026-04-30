@@ -1,12 +1,17 @@
-Exercício 1 - Create
+# Exercício 1 - Create
 
-Criar banco
+## Criar banco
+```javascript
 use loja_virtual
+```
 
-Criar coleção
+## Criar coleção
+```javascript
 db.createCollection("produtos")
+```
 
-Inserir um produto
+## Inserir um produto
+```javascript
 db.produtos.insertOne({
   nome: "Smartphone Galaxy A15",
   categoria: "Eletronicos",
@@ -15,8 +20,10 @@ db.produtos.insertOne({
   armazenamento: "128GB",
   cor: "Azul"
 })
+```
 
-Inserir vários produtos
+## Inserir vários produtos
+```javascript
 db.produtos.insertMany([
   {
     nome: "MongoDB na Pratica",
@@ -51,63 +58,75 @@ db.produtos.insertMany([
     marca: "Olympikus"
   }
 ])
+```
 
+---
 
-Exercício 2 - Read
+# Exercício 2 - Read
 
-Listar todos os produtos
+## Listar todos os produtos
+```javascript
 db.produtos.find()
+```
 
-
-Produtos com preço maior que 100
+## Produtos com preço maior que 100
+```javascript
 db.produtos.find({ preco: { $gt: 100 } })
+```
 
-
-Produtos da categoria Eletronicos
+## Produtos da categoria Eletronicos
+```javascript
 db.produtos.find({ categoria: "Eletronicos" })
+```
 
-
-Mostrar apenas nome e preço
+## Mostrar apenas nome e preço
+```javascript
 db.produtos.find({}, { nome: 1, preco: 1, _id: 0 })
+```
 
+---
 
-Exercício 3 - Update
+# Exercício 3 - Update
 
-Atualizar preço
-
+## Atualizar preço
+```javascript
 db.produtos.updateOne(
   { nome: "Smartphone Galaxy A15" },
   { $set: { preco: 1199.90 } }
 )
 db.produtos.find({ nome: "Smartphone Galaxy A15" })
+```
 
-
-Adicionar estoque para todos
-
+## Adicionar estoque para todos
+```javascript
 db.produtos.updateMany(
   {},
   { $set: { estoque: 10 } }
 )
 db.produtos.find()
+```
 
-
-Marcar roupas como promoção
-
+## Marcar roupas como promoção
+```javascript
 db.produtos.updateMany(
   { categoria: "Roupas" },
   { $set: { promocao: true } }
 )
 db.produtos.find({ categoria: "Roupas" })
+```
 
-Exercício 4 - Delete
+---
 
-Remover um produto
+# Exercício 4 - Delete
 
+## Remover um produto
+```javascript
 db.produtos.deleteOne({ nome: "MongoDB na Pratica" })
 db.produtos.find()
+```
 
-
-Remover categoria
-
+## Remover categoria
+```javascript
 db.produtos.deleteMany({ categoria: "Calcados" })
 db.produtos.find()
+```
